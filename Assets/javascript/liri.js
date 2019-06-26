@@ -8,19 +8,13 @@ var bandsintown = require('bandsintown')(APP_ID = 'codingbootcamp');
 var request = require('request');
 var Spotify = require('node-spotify-api');
 
-///////////// GLOBAL VARIABLES FOR USER INPUT//////////
 
-//This sets up how a user can input a name that has more than one word
-//Empty variable for storing the name
 var liri = "";
 
-// //All of the args will be stored in an array
 var nodeArgs = process.argv;
 
-//This is what the user will type in to let liri know what to do (see below)
 var command = process.argv[2];
 
-// //Loop through the words entered in the node Arg and add +'s to store together
 for (var i = 3; i < nodeArgs.length; i++) {
     if (i > 3 && i < nodeArgs.length) {
         liri = liri + "+" + nodeArgs[i];
@@ -30,7 +24,6 @@ for (var i = 3; i < nodeArgs.length; i++) {
 }
 
 //switch case for different Liri Commands. I had to google switch/case.
-//The command is the var command above (aka "line 25")
 
 //bandsintown
 switch (command) {
@@ -72,7 +65,6 @@ switch (command) {
 function getConcert() {
     var query = "https://rest.bandsintown.com/artists/" + liri + "/events?app_id=codingbootcamp"
     bandsintown
-
     request(query, function (error, response, body) {
         if (error) {
             console.log("Error! Try again");
